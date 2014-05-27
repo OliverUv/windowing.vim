@@ -23,16 +23,25 @@ Functions
 
 Short description of each function. See doc/windowing.txt for details.
 
-:windowing#minimize_vertically:
+windowing#minimize_vertically()
     Sets the vertical size of a window to the number of lines in its buffer.
+
+
+Installing
+==========
+
+Use your favoured install method, of course! Pathogen, NeoBundle, Vundle,
+I bet they're all wonderful. I've only tested this with Pathogen. Patches
+welcome if other methods don't work. Speaking of which...
 
 
 Contributing
 ============
 
-Contributions are welcome! Submit pull requests from feature branches
-rebased onto the main repository's master branch. Short and descriptive
-commit messages, please.
+Contributions are welcome! Submit pull requests from `feature branches
+<https://www.atlassian.com/git/workflows#!workflow-feature-branch>`_
+rebased onto the main repository's master branch. Short and `descriptive
+commit messages <www.tpope.net/node/106>`_, please.
 
 
 MIT License

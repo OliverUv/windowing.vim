@@ -22,5 +22,5 @@
 function! windowing#minimize_vertically()
     let l:numlines = line('$')
     exe "resize" . l:numlines
-    exe "normal" . l:numlines . "^Y"
+    exe "normal!" . l:numlines . "<c-y>"
 endfunction

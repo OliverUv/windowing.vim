@@ -43,6 +43,9 @@ Contributions are welcome! Submit pull requests from `feature branches
 rebased onto the main repository's master branch. Short and `descriptive
 commit messages <www.tpope.net/node/106>`_, please.
 
+There's a list of TODOs in the documentation file, in case you're itcin'
+for an itch to scratch.
+
 
 MIT License
 ===========

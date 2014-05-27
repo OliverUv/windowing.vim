@@ -30,6 +30,7 @@ CONTENTS                                        *windowing-contents*
 Contents        |windowing-contents|
 Instruction     |windowing-instruction|
 Minimize        |windowing-minimize|
+TODO            |windowing-todo|
 
 ==============================================================================
 INSTRUCTION                                     *windowing-instruction*
@@ -55,11 +56,49 @@ buffer and run this function: The CSS window is now 6 lines tall.
 Suggested mapping: >
     nnoremap <silent> z<cr> :call windowing#minimize_vertically()<cr>
 <
-(NOTE will overwrite an existing mapping)
+(NOTE: will overwrite an existing mapping)
 The mapping above fits well with the semantics of the zN<CR> mapping of :h z
 As far as I can tell z<CR> is identical to zt but with the annoying side
 effect of moving your cursor.
 
+==============================================================================
+TODO                                            *windowing-todo*
+
+The minimize_vertically function will do bad things if used where it isn't
+supposed to. Say you've only got one window open, with a one line buffer in
+it. Call minimize_vertically, and suddenly the area below the status line
+covers your entire screen. Splendid. We should ensure that there's a window
+available that will use up the width we give away.
+
+We want a minimize_horizontally function, too. And a minimize function that
+just calls both the vertical and horizontal ones.
+
+Also, might not really want to set the width to the number of chars in the
+current window's buffer. We could to set it to the max of the number of chars
+in buffers of all sibling windows with the same orientations. To clarify, say
+you have this layout:
+
+    -------------------
+    |         |       |
+    |    A    |       |
+    |         |       |
+    |---------    C   |
+    |         |       |
+    |    B    |       |
+    |         |       |
+    -------------------
+
+A and B are siblings in the tree layout of windows, so they will always have
+the same width. We want to minimize that width, but never so that we have to
+scroll or line-wrap in A or B.
+
+Imagine that A and B have 1000+ lines each. We know they're all very short
+lines, so we want to execute the minimize command to give room to C. The
+appropriate behaviour would be to find the width of the longest line in both
+A and B, and set the width to that.
+
+Also, once we're dealing with line widths, we're going to have to deal with
+unicode stuff and character widths. I hear that's a can of worms.
 
 ==============================================================================
 vim:tw=78:ts=8:ft=help:fen:

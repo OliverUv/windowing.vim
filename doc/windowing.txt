@@ -1,0 +1,65 @@
+*windowing.txt* For Vim version 7.4     Last change: 2014 May 27
+
+Version: 0.1
+Author: OliverUv <oliver@uvman.se>
+License: MIT license  {{{
+    Permission is hereby granted, free of charge, to any person obtaining
+    a copy of this software and associated documentation files (the
+    "Software"), to deal in the Software without restriction, including
+    without limitation the rights to use, copy, modify, merge, publish,
+    distribute, sublicense, and/or sell copies of the Software, and to
+    permit persons to whom the Software is furnished to do so, subject to
+    the following conditions:
+    The above copyright notice and this permission notice shall be included
+    in all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+    OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+    CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+    TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+}}}
+
+        windowing.vim~
+
+==============================================================================
+CONTENTS                                        *windowing-contents*
+
+Contents        |windowing-contents|
+Instruction     |windowing-instruction|
+Minimize        |windowing-minimize|
+
+==============================================================================
+INSTRUCTION                                     *windowing-instruction*
+
+This plugin defines a number of convenience functions for working with several
+windows. I don't want to mess with your mappings, so map them yourself!
+
+Generally, mappings can be done in this form >
+    nnoremap <silent> KEYSTOMAP :call g:FUNCTION_TO_MAP()<cr>
+<
+
+==============================================================================
+MINIMIZE                                        *windowing-minimize*
+
+Sets the vertical size of a window to the number of lines in its buffer.
+
+Lets say you have a .html and its .css file open, with the CSS in a window
+above the HTML file. Both start out covering 50% of your vertical screen real
+estate, but since the CSS file is only 6 lines long, you want it to cover a
+lot less so you have room to see your HTML. You put your cursor in the CSS
+buffer and run this function: The CSS window is now 6 lines tall.
+
+Suggested mapping: >
+    nnoremap <silent> z<cr> :call windowing#minimize_vertically()<cr>
+<
+(NOTE will overwrite an existing mapping)
+The mapping above fits well with the semantics of the zN<CR> mapping of :h z
+As far as I can tell z<CR> is identical to zt but with the annoying side
+effect of moving your cursor.
+
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:fen:

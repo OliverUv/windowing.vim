@@ -64,11 +64,27 @@ effect of moving your cursor.
 ==============================================================================
 TODO                                            *windowing-todo*
 
+1. Ignore header comments
+-------------------------
+
+Files often have some license header comments. We don't want to see those.
+The minimize_vertically action should check for such lines, and deduct them
+from the size we set the window to.
+
+After we've executed a minimize_vertically action we also want to make sure
+those header comment lines are above the viewable area.
+
+2. Check necessity of action
+----------------------------
+
 The minimize_vertically function will do bad things if used where it isn't
 supposed to. Say you've only got one window open, with a one line buffer in
 it. Call minimize_vertically, and suddenly the area below the status line
 covers your entire screen. Splendid. We should ensure that there's a window
 available that will use up the width we give away.
+
+3. Minimize horizontally
+------------------------
 
 We want a minimize_horizontally function, too. And a minimize function that
 just calls both the vertical and horizontal ones.
